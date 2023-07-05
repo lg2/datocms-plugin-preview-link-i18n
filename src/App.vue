@@ -74,7 +74,9 @@ export default {
           });
         }
         this.link =
-          this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
+          this.plugin.plugin.attributes.parameters.previewUrl +
+          entry.path +
+          `?preview=true`;
       }
     },
     async initPlugin() {
