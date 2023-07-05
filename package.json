@@ -1,0 +1,81 @@
+{
+  "name": "datocms-plugin-preview-link-lg2",
+  "version": "0.0.5",
+  "description": "DatoCms preview links",
+  "keywords": [
+    "datocms-plugin"
+  ],
+  "files": [
+    "build",
+    "docs"
+  ],
+  "datoCmsPlugin": {
+    "title": "Dato map links",
+    "previewImage": "docs/preview.png",
+    "coverImage": "docs/cover.png",
+    "entryPoint": "dist/index.html",
+    "pluginType": "field_editor",
+    "fieldTypes": [
+      "json"
+    ],
+    "parameters": {
+      "global": [
+        {
+          "id": "previewUrl",
+          "label": "Preview URL",
+          "type": "string",
+          "required": true,
+          "default": "",
+          "hint": "Url of you preview site WITHOUT trailing slash"
+        },
+        {
+          "id": "dataMapUrl",
+          "label": "Data Map URL",
+          "type": "string",
+          "required": true,
+          "default": "",
+          "hint": "Url of your data map"
+        }
+      ],
+      "instance": []
+    }
+  },
+  "scripts": {
+    "serve": "HOST=0.0.0.0 PORT=3000 vue-cli-service serve",
+    "generate": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "addToProject": "yo datocms-plugin:add-to-project"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "core-js": "^3.1.2",
+    "datocms-plugins-sdk": "^0.1.2",
+    "request": "^2.88.2",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "generator-datocms-plugin": "^1.1.1",
+    "vue-template-compiler": "^2.6.10",
+    "yo": "^4.3.1"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitbucket.org:lg2fabrique/datocms-plugin-preview-link-lg2"
+  },
+  "author": "Romain Avalle",
+  "license": "ISC"
+}
