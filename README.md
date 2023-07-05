@@ -1,4 +1,4 @@
-# datocms-csv-to-json
+# datocms-plugin-preview-link-i18n-lg2
 
 ## Project setup
 ```
