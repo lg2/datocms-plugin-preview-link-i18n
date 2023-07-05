@@ -2,7 +2,7 @@
   <div id="app">
     <a v-if="link" :href="link" v-text="link" rel="noopener" target="_blank">
     </a>
-    <p v-else>Not working</p>
+    <p v-else>Loading...</p>
   </div>
 </template>
 
