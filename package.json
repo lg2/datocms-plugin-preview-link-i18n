@@ -1,6 +1,6 @@
 {
-  "name": "datocms-plugin-preview-link-i18n-lg2",
-  "version": "0.0.8",
+  "name": "@lg2/datocms-plugin-preview-link-i18n-lg2",
+  "version": "0.0.9",
   "description": "DatoCms preview links",
   "keywords": [
     "datocms-plugin"
@@ -74,8 +74,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org:lg2fabrique/datocms-plugin-preview-link-i18n-lg2.git"
+    "url": "https://github.com/lg2/datocms-plugin-preview-link-i18n.git"
   },
   "author": "Romain Avalle",
   "license": "ISC"
-}
+  }
