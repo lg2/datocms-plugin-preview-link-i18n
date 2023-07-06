@@ -74,8 +74,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lg2/datocms-plugin-preview-link-i18n.git"
+    "url": "git+https://github.com/lg2/datocms-plugin-preview-link-i18n.git"
   },
   "author": "Romain Avalle",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lg2/datocms-plugin-preview-link-i18n/issues"
+  },
+  "homepage": "https://github.com/lg2/datocms-plugin-preview-link-i18n#readme",
+  "main": "dist/index.html",
+  "directories": {
+    "doc": "docs"
+  }
 }

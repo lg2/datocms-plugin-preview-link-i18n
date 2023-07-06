@@ -1,4 +1,4 @@
-# datocms-plugin-preview-link-i18n-lg2
+# datocms-plugin-preview-link-i18n
 
 ## Project setup
 ```
