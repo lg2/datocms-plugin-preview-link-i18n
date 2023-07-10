@@ -21,9 +21,7 @@ export default {
     if (process.env.NODE_ENV === "production") {
       await this.initPlugin();
     } else {
-      await this.loadSiteMap(
-        "https://table-2023.netlify.app/dato-route-map.json"
-      );
+      await this.loadSiteMap("/dato-route-map.json");
       this.checkLink("TbPageDetailRestaurantRecord");
       return true;
     }
@@ -43,7 +41,6 @@ export default {
         });
     },
     checkLink(model) {
-      console.log(model);
       const entry = this.data.find((el) => {
         if (el.locale) {
           return el.model === model && el.locale === this.plugin.locale;
@@ -74,9 +71,7 @@ export default {
           });
         }
         this.link =
-          this.plugin.plugin.attributes.parameters.previewUrl +
-          entry.path +
-          `?preview=true`;
+          this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
       }
     },
     async initPlugin() {
