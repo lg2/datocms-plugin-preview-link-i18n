@@ -22,7 +22,7 @@ export default {
       await this.initPlugin();
     } else {
       await this.loadSiteMap("/dato-route-map.json");
-      this.checkLink("TbPageDetailRestaurantRecord");
+      this.checkLink("PageDetailRestaurantRecord");
       return true;
     }
   },

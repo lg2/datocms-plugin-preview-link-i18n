@@ -1,0 +1,21 @@
+[
+  { "path": "/about", "params": [], "model": "PageAboutRecord" },
+  { "path": "/contact", "params": [], "model": "PageContactRecord" },
+  {
+    "path": "/events",
+    "params": [],
+    "model": "PageListingShowAndEventRecord"
+  },
+  {
+    "path": "/restaurants",
+    "params": [],
+    "model": "PageListingRestaurantRecord"
+  },
+  {
+    "path": "/restaurants/:slug",
+    "params": ["slug"],
+    "model": "PageDetailRestaurantRecord"
+  },
+  { "path": "/", "params": [], "model": "PageHomeRecord" },
+  { "path": "/:slug", "params": ["slug"], "model": "PageCommonRecord" }
+]
