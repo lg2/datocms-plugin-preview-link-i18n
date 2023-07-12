@@ -1,11 +1,9 @@
 # datocms-plugin-preview-link-i18n
 
 Plugins that give your page url with i18n.
-Need to organise you web app with Nuxtjs using [create dato map nuxt modules](https://github.com/lg2/nuxtmodule-create-dato-map) and [link resolver nuxt plugin](https://github.com/lg2/nuxtplugin-link-resolver)
 
-This plugins help you create an public xml file on your web app to fit the routes on your app coralated with datoModelRecord.
+You'll need to create a json file in your public app like below.
 
-If not using this plugin youcan simply create an xml file like this in you public app.
 ```
 [
     { "path": "/", "params": [], "model": "PageHomeRecord", locale: "en" },
@@ -19,27 +17,9 @@ If not using this plugin youcan simply create an xml file like this in you publi
 ]
 ```
 
+If using nuxtJs you can use the following plugins to help you creating this file
+* [create dato map nuxt modules](https://github.com/lg2/nuxtmodule-create-dato-map) 
+* [link resolver nuxt plugin](https://github.com/lg2/nuxtplugin-link-resolver)
 
+This plugins help you create an public json file on your web app to fit the routes on your app coralated with datoModelRecord.
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
