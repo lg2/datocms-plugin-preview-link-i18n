@@ -63,8 +63,8 @@ export default {
                 this.plugin.item.attributes[first][second]
               );
               path = entry.locale
-                ? this.plugin.item.attributes[snakeCase][entry.locale]
-                : this.plugin.item.attributes[snakeCase];
+                ? this.plugin.item.attributes[first][second][entry.locale]
+                : this.plugin.item.attributes[first][second];
             } else {
               console.log(
                 snakeCase,
