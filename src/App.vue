@@ -22,7 +22,7 @@ export default {
       await this.initPlugin();
     } else {
       await this.loadSiteMap("/dato-route-map.json");
-      this.checkLink("PageDetailRestaurantRecord");
+      this.checkLink("RdiRecipeRecord");
       return true;
     }
   },
@@ -54,19 +54,30 @@ export default {
           console.log(this.plugin);
           entry.params.forEach((el) => {
             const snakeCase = this.camelToSnake(el);
-            console.log(
-              snakeCase,
-              this.plugin.item.attributes,
-              this.plugin.item.attributes[snakeCase]
-            );
-            console.log("entry.path", entry.path);
-            console.log(
-              "this.plugin.item.attributes[snakeCase]",
-              this.plugin.item.attributes[snakeCase]
-            );
-            const path = entry.locale
-              ? this.plugin.item.attributes[snakeCase][entry.locale]
-              : this.plugin.item.attributes[snakeCase];
+            let path = "";
+            if (snakeCase.indexOf(".") !== -1) {
+              const [first, second] = snakeCase.split(".");
+              console.log(
+                snakeCase,
+                this.plugin.item.attributes,
+                this.plugin.item.attributes[first][second]
+              );
+              path = entry.locale
+                ? this.plugin.item.attributes[snakeCase][entry.locale]
+                : this.plugin.item.attributes[snakeCase];
+            } else {
+              console.log(
+                snakeCase,
+                this.plugin.item.attributes,
+                this.plugin.item.attributes[snakeCase]
+              );
+              console.log("entry.path", entry.path);
+
+              path = entry.locale
+                ? this.plugin.item.attributes[snakeCase][entry.locale]
+                : this.plugin.item.attributes[snakeCase];
+            }
+
             entry.path = entry.path.replace(`:${el}`, path);
           });
         }
