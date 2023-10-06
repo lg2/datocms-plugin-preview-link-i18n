@@ -49,7 +49,7 @@ export default {
           return el.model === model;
         }
       });
-      console.log(this.plugin);
+      // console.log(this.plugin);
       if (entry) {
         if (entry.params.length) {
           await entry.params.forEach(async (el) => {
