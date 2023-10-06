@@ -7,7 +7,7 @@
 </template>
 
 <script>
-const DatoCmsPlugin = require("datocms-plugins-sdk");
+const { connect, Field, FieldIntentCtx } = require("datocms-plugins-sdk");
 export default {
   name: "app",
   components: {},
@@ -17,14 +17,15 @@ export default {
       link: "",
     };
   },
-  async mounted() {
-    if (process.env.NODE_ENV === "production") {
-      await this.initPlugin();
-    } else {
-      await this.loadSiteMap("/dato-route-map.json");
-      this.checkLink("RdiRecipeRecord");
-      return true;
-    }
+  mounted() {
+    this.initPlugin();
+    // if (process.env.NODE_ENV === "production") {
+    //   await this.initPlugin();
+    // } else {
+    //   await this.loadSiteMap("/dato-route-map.json");
+    //   this.checkLink("RdiRecipeRecord");
+    //   return true;
+    // }
   },
   watch: {},
   methods: {
@@ -36,11 +37,11 @@ export default {
           const data = await res.json();
           this.data = data;
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     },
-    checkLink(model) {
+    async checkLink(model) {
       const entry = this.data.find((el) => {
         if (el.locale) {
           return el.model === model && el.locale === this.plugin.locale;
@@ -48,64 +49,60 @@ export default {
           return el.model === model;
         }
       });
+      console.log(this.plugin);
       if (entry) {
-        console.log(entry);
         if (entry.params.length) {
-          console.log(this.plugin);
-          entry.params.forEach((el) => {
+          await entry.params.forEach(async (el) => {
             const snakeCase = this.camelToSnake(el);
             let path = "";
+            const locale = entry.locale
+              ? this.plugin.site.attributes.locales.find((locale) =>
+                  locale.includes(entry.locale)
+                )
+              : this.plugin.site.attributes.locales[0];
             if (snakeCase.indexOf(".") !== -1) {
-              const [first, second] = snakeCase.split(".");
-              console.log(
-                snakeCase,
-                this.plugin.item.attributes,
-                this.plugin.item.attributes[first][second]
+              const second = el.split(".")[1];
+              const firstSlug = snakeCase.split(".")[0];
+
+              const { SiteClient } = require("datocms-client");
+              const client = new SiteClient(this.plugin.currentUserAccessToken);
+              const item = await client.item.find(
+                this.plugin.item.attributes[firstSlug]
               );
-              path = entry.locale
-                ? this.plugin.item.attributes[first][second][entry.locale]
-                : this.plugin.item.attributes[first][second];
+              // console.log(Object.entries(this.plugin.fields).map(field => field[1]).find(field => field.id === this.plugin.item.attributes[first]));
+              path = item[second][locale];
             } else {
-              console.log(
-                snakeCase,
-                this.plugin.item.attributes,
-                this.plugin.item.attributes[snakeCase]
-              );
-              console.log("entry.path", entry.path);
-
-              path = entry.locale
-                ? this.plugin.item.attributes[snakeCase][entry.locale]
-                : this.plugin.item.attributes[snakeCase];
+              path = this.plugin.item.attributes[snakeCase][locale];
             }
-
-            entry.path = entry.path.replace(`:${el}`, path);
+            entry.path = entry.path.replace(`:${el}?`, path);
+            this.link =
+              this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
           });
         }
-        this.link =
-          this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
       }
     },
-    async initPlugin() {
-      this.plugin = await DatoCmsPlugin.init();
-      console.log(this.plugin);
-      this.plugin.startAutoResizer();
-      // const fieldValue = this.plugin.getFieldValue(this.plugin.fieldPath);
-      const record = this.snakeToPascal(
-        this.plugin.itemType.attributes.api_key
-      );
-      await this.loadSiteMap();
-      this.checkLink(record);
-
-      // if (fieldValue) {
-      //   this.dataJson = JSON.parse(fieldValue);
-      // }
+    initPlugin() {
+      const _this = this;
+      connect({
+        manualFieldExtensions() {
+          return [
+            {
+              id: "preview",
+              name: "My preview widget",
+              type: "editor",
+              fieldTypes: ["json"],
+            },
+          ];
+        },
+        async renderFieldExtension(id, ctx) {
+          const record = _this.snakeToPascal(ctx.itemType.attributes.api_key);
+          _this.plugin = ctx;
+          await _this.loadSiteMap();
+          await _this.checkLink(record);
+        },
+      });
+      return;
     },
-    // updateDatoField() {
-    //   this.plugin.setFieldValue(
-    //     this.plugin.fieldPath,
-    //     JSON.stringify(this.dataJson)
-    //   );
-    // },
     snakeToPascal(snakeCase) {
       const words = snakeCase.split("_");
       const pascalCaseWords = words.map(
@@ -125,13 +122,4 @@ export default {
 
 <style lang="scss">
 @import "https://unpkg.com/datocms-plugins-sdk/dist/sdk.css";
-
-.table-container {
-  width: 100%;
-  margin-top: 30px;
-  overflow: auto;
-  td {
-    min-width: 200px;
-  }
-}
 </style>
