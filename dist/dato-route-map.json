@@ -1,21 +1,226 @@
 [
-  { "path": "/about", "params": [], "model": "PageAboutRecord" },
-  { "path": "/contact", "params": [], "model": "PageContactRecord" },
+  { "path": "/a-propos", "params": [], "model": "RdiPageAboutRecord" },
+  { "path": "/fr", "params": [], "model": "RdiPageHomeRecord", "locale": "fr" },
+  { "path": "/magazine", "params": [], "model": "RdiPageMagazineRecord" },
+  { "path": "/recettes", "params": [], "model": "RdiPageRecipeRecord" },
+  { "path": "/themes", "params": [], "model": "RdiPageThemeRecord" },
+  { "path": "/vide-frigo", "params": [], "model": "RdiPageFridgeRecord" },
   {
-    "path": "/events",
+    "path": "/fr/a-propos",
     "params": [],
-    "model": "PageListingShowAndEventRecord"
+    "model": "RdiPageAboutRecord",
+    "locale": "fr"
   },
   {
-    "path": "/restaurants",
+    "path": "/fr/magazine",
     "params": [],
-    "model": "PageListingRestaurantRecord"
+    "model": "RdiPageMagazineRecord",
+    "locale": "fr"
   },
   {
-    "path": "/restaurants/:slug",
-    "params": ["slug"],
-    "model": "PageDetailRestaurantRecord"
+    "path": "/fr/recettes",
+    "params": [],
+    "model": "RdiPageRecipeRecord",
+    "locale": "fr"
   },
-  { "path": "/", "params": [], "model": "PageHomeRecord" },
-  { "path": "/:slug", "params": ["slug"], "model": "PageCommonRecord" }
+  {
+    "path": "/fr/themes",
+    "params": [],
+    "model": "RdiPageThemeRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/vide-frigo",
+    "params": [],
+    "model": "RdiPageFridgeRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/recettes/categorie-de-plat",
+    "params": [],
+    "model": "RdiPageCategoryRecord"
+  },
+  {
+    "path": "/recettes/methodes-de-cuisson",
+    "params": [],
+    "model": "RdiPageFilterMethodRecord"
+  },
+  {
+    "path": "/recettes/moments",
+    "params": [],
+    "model": "RdiPageFilterMomentRecord"
+  },
+  {
+    "path": "/recettes/preferences-alimentaires",
+    "params": [],
+    "model": "RdiPageFilterPreferenceRecord"
+  },
+  {
+    "path": "/recettes/produits-laitiers",
+    "params": [],
+    "model": "RdiPageFilterDairyRecord"
+  },
+  {
+    "path": "/recettes/proteines",
+    "params": [],
+    "model": "RdiPageFilterProteineRecord"
+  },
+  {
+    "path": "/recettes/specifications",
+    "params": [],
+    "model": "RdiPageFilterSpecRecord"
+  },
+  {
+    "path": "/fr/recettes/categorie-de-plat",
+    "params": [],
+    "model": "RdiPageCategoryRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/methodes-de-cuisson",
+    "params": [],
+    "model": "RdiPageFilterMethodRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/moments",
+    "params": [],
+    "model": "RdiPageFilterMomentRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/preferences-alimentaires",
+    "params": [],
+    "model": "RdiPageFilterPreferenceRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/produits-laitiers",
+    "params": [],
+    "model": "RdiPageFilterDairyRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/proteines",
+    "params": [],
+    "model": "RdiPageFilterProteineRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/specifications",
+    "params": [],
+    "model": "RdiPageFilterSpecRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/methodes-de-cuisson/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMethodRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/moments/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMomentRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/preferences-alimentaires/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterPrefRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/produits-laitiers/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMilkProductRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/proteine/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterProteineRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/specifications/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterSpecRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/recettes/categorie-de-plat/:rdiRelationCategory.rdiSlug/:rdiSlug",
+    "params": ["rdiSlug", "rdiRelationCategory.rdiSlug"],
+    "model": "RdiRecipeRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/magazine/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiPageMagazineCategoryRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/fr/themes/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiRecipeThemeRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/recettes/methodes-de-cuisson/:rdiSlug?",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMethodRecord"
+  },
+  {
+    "path": "/recettes/moments/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMomentRecord"
+  },
+  {
+    "path": "/recettes/preferences-alimentaires/:rdiSlug?",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterPrefRecord"
+  },
+  {
+    "path": "/recettes/produits-laitiers/:rdiSlug?",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterMilkProductRecord"
+  },
+  {
+    "path": "/recettes/proteines/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterProteineRecord"
+  },
+  {
+    "path": "/recettes/specifications/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiFilterSpecRecord"
+  },
+  {
+    "path": "/fr/magazine/:rdiCategory.rdiSlug/:rdiSlug",
+    "params": ["rdiSlug", "rdiCategory.rdiSlug"],
+    "model": "RdiPageMagazineArticleRecord",
+    "locale": "fr"
+  },
+  {
+    "path": "/recettes/categorie-de-plat/:rdiRelationCategory.rdiSlug?/:rdiSlug?",
+    "params": [ "rdiRelationCategory.rdiSlug", "rdiSlug"],
+    "model": "RdiRecipeRecord"
+  },
+  {
+    "path": "/magazine/:categorie",
+    "params": ["rdiSlug"],
+    "model": "RdiPageMagazineCategoryRecord"
+  },
+  {
+    "path": "/themes/:rdiSlug",
+    "params": ["rdiSlug"],
+    "model": "RdiRecipeThemeRecord"
+  },
+  {
+    "path": "/magazine/:rdiCategory.rdiSlug/:page",
+    "params": ["rdiSlug", "rdiCategory.rdiSlug"],
+    "model": "RdiPageMagazineArticleRecord"
+  },
+  { "path": "/", "params": [], "model": "RdiPageHomeRecord" }
 ]
