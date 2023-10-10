@@ -74,7 +74,7 @@ export default {
             } else {
               path = this.plugin.item.attributes[snakeCase][locale];
             }
-            entry.path = entry.path.replace(`:${el}?`, path);
+            entry.path = entry.path.replace(`:${el}?`, path).replace(`:${el}`, path);
             this.link =
               this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
           });
