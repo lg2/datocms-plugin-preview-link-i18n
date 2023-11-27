@@ -49,6 +49,7 @@ export default {
           return el.model === model;
         }
       });
+
       // console.log(this.plugin);
       if (entry) {
         if (entry.params.length) {
@@ -69,15 +70,22 @@ export default {
               const item = await client.item.find(
                 this.plugin.item.attributes[firstSlug]
               );
-              // console.log(Object.entries(this.plugin.fields).map(field => field[1]).find(field => field.id === this.plugin.item.attributes[first]));
-              path = item[second][locale];
+             
+              path = item[second][locale] || item[second];
             } else {
-              path = this.plugin.item.attributes[snakeCase][locale];
+              path =
+                this.plugin.item.attributes[snakeCase][locale] ||
+                this.plugin.item.attributes[snakeCase];
             }
-            entry.path = entry.path.replace(`:${el}?`, path).replace(`:${el}`, path);
+            entry.path = entry.path
+              .replace(`:${el}?`, path)
+              .replace(`:${el}`, path);
             this.link =
               this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
           });
+        } else {
+          this.link =
+            this.plugin.plugin.attributes.parameters.previewUrl + entry.path;
         }
       }
     },
