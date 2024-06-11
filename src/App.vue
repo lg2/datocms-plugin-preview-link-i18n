@@ -70,9 +70,13 @@ export default {
               const item = await client.item.find(
                 this.plugin.item.attributes[firstSlug]
               );
-             
+
               path = item[second][locale] || item[second];
             } else {
+              console.log(
+                this.plugin.item.attributes[snakeCase][locale],
+                this.plugin.item.attributes[snakeCase]
+              );
               path =
                 this.plugin.item.attributes[snakeCase][locale] ||
                 this.plugin.item.attributes[snakeCase];
